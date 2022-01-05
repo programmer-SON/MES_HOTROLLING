@@ -19,10 +19,11 @@ public class OrderEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String user_id;
+
 	private String order_id;
 	private String product_id;
 	private String company_id;
+	private String user_id;
 	private Date process_start;
 	private Date process_end;
 	private Date regdate;
