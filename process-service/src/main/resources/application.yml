@@ -1,0 +1,21 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: process-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: passw0rd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
