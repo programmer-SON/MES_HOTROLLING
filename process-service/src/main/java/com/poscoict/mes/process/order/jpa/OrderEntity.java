@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -18,14 +20,16 @@ public class OrderEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String order_id;
-	private String product_id;
-	private String company_id;
-	private String user_id;
-	private Date process_start;
-	private Date process_end;
+	private String orderId;
+	private String productId;
+	private String companyId;
+	private String userId;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private Date processStart;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private Date processEnd;
 	private Date regdate;
-	private Integer stock_plan;
+	private Integer stockPlan;
 	private String status;
 	
 }

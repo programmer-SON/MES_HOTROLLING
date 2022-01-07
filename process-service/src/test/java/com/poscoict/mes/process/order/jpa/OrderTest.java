@@ -23,13 +23,13 @@ class OrderTest {
 		
 		IntStream.range(1, 10).forEach(i -> {
 			OrderEntity entity = new OrderEntity();
-			entity.setOrder_id("A1234" + i);
-			entity.setProduct_id("B1234" + i);
-			entity.setProcess_start(new Date());
-			entity.setProcess_end(new Date());
-			entity.setProduct_id("C1234"+i);
-			entity.setUser_id("D1234"+i);
-			entity.setStock_plan(200);
+			entity.setOrderId("A1234" + i);
+			entity.setProductId("B1234" + i);
+			entity.setProcessStart(new Date());
+			entity.setProcessEnd(new Date());
+			entity.setProductId("C1234"+i);
+			entity.setUserId("D1234"+i);
+			entity.setStockPlan(200);
 			if(i % 2 == 0) {
 				entity.setStatus("진행중");
 			}else {

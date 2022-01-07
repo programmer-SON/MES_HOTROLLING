@@ -78,3 +78,6 @@ fabric.properties
 
 .metadata/
 .metadata/**
+
+.idea
+.idea/**
