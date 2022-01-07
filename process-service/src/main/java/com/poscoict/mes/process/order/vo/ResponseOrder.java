@@ -20,17 +20,4 @@ public class ResponseOrder {
 	private Integer stock_plan;
 	private String status;
 	
-	
-//	entity.setOrder_id("A1234" + i);
-//	entity.setProduct_id("B1234" + i);
-//	entity.setProcess_start(new Date());
-//	entity.setProcess_end(new Date());
-//	entity.setProduct_id("C1234"+i);
-//	entity.setUser_id("D1234"+i);
-//	entity.setStock_plan(200);
-//	if(i % 2 == 0) {
-//		entity.setStatus("진행중");
-//	}else {
-//		entity.setStatus("완료");
-//	}
 }

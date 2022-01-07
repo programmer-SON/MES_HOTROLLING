@@ -18,8 +18,6 @@ public class OrderEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-
 	private String order_id;
 	private String product_id;
 	private String company_id;
@@ -29,4 +27,5 @@ public class OrderEntity {
 	private Date regdate;
 	private Integer stock_plan;
 	private String status;
+	
 }

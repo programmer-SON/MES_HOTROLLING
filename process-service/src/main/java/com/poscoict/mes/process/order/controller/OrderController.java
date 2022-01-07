@@ -22,18 +22,14 @@ public class OrderController {
 	
 	OrderRepository orderRepository;
 	
-	
 	@Autowired
 	public OrderController(OrderRepository orderRepository) {
 		this.orderRepository = orderRepository;
 	}
 
-
 	@GetMapping("/orders")
-	public ResponseEntity<List<ResponseOrder>> getOrders(){
-		
+	public ResponseEntity<List<ResponseOrder>> getOrders(){		
 		Iterable<OrderEntity> orderList = orderRepository.findAll();
-		
 		List<ResponseOrder> result = new ArrayList<>();
 		
 		orderList.forEach(v -> {
@@ -43,7 +39,7 @@ public class OrderController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json");
 		
-		
 		return ResponseEntity.status(HttpStatus.OK).body(result);
 	}
+	
 }

@@ -1,6 +1,6 @@
-package com.poscoict.mes.process.order.jpa;
+package com.poscoict.mes.process.product.jpa;
 
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -12,34 +12,32 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class OrderTest {
+class ProductLogTest {
 
 	@Autowired
-	OrderRepository repo;
+	ProductLogRepository repo;
 	
 	@Test
 	@DisplayName("insertOrder")
-	void insertOrder() {
-		
+	void insertProductLog() {
 		IntStream.range(1, 10).forEach(i -> {
-			OrderEntity entity = new OrderEntity();
-			entity.setOrder_id("A1234" + i);
+			ProductLogEntity entity = new ProductLogEntity();
 			entity.setProduct_id("B1234" + i);
-			entity.setProcess_start(new Date());
-			entity.setProcess_end(new Date());
-			entity.setProduct_id("C1234"+i);
-			entity.setUser_id("D1234"+i);
-			entity.setStock_plan(200);
+			entity.setThickness(i*10);
+			entity.setWidth(i*100);
+			entity.setLength(i*5);
+			entity.setProduct_update(LocalTime.now());
+			
 			if(i % 2 == 0) {
-				entity.setStatus("진행중");
+				entity.setProduct_status("정상");
 			}else {
-				entity.setStatus("완료");
+				entity.setProduct_status("불량");
 			}
 			repo.save(entity);
 		});	
 	}
 	
 	@Test
-	void getOrders() {}
+	void getProductLog() {}
 
 }
