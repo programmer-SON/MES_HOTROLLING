@@ -11,9 +11,9 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 //@JsonInclude
 public class ResponseOrder {
-	
-	private String userId;
+
 	private String orderId;
+	private String userId;
 	private String productId;
 	private String companyId;
 	

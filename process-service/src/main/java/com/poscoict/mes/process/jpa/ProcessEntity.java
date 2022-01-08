@@ -17,7 +17,7 @@ public class ProcessEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String product_id;
+	private String productId;
 	private Float thickness;
 	private Float width;
 	private Float length;

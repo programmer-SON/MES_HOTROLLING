@@ -3,6 +3,9 @@ package com.poscoict.mes.process.product.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.poscoict.mes.process.product.jpa.ProductEntity;
+import com.poscoict.mes.process.product.jpa.ProductRepository;
+import com.poscoict.mes.process.product.vo.ResponseProduct;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,10 +24,12 @@ import com.poscoict.mes.process.product.vo.ResponseProductLog;
 public class ProductController {
 	
 	ProductLogRepository productLogRepository;
-	
+	ProductRepository productRepository;
+
 	@Autowired
-	public ProductController(ProductLogRepository productLogRepository) {
+	public ProductController(ProductLogRepository productLogRepository, ProductRepository productRepository) {
 		this.productLogRepository = productLogRepository;
+		this.productRepository = productRepository;
 	}
 
 	@GetMapping("/product_log")
@@ -41,5 +46,16 @@ public class ProductController {
 		
 		return ResponseEntity.status(HttpStatus.OK).body(result);
 	}
-	
+
+	@GetMapping("/products")
+	public ResponseEntity<List<ResponseProduct>> getProducts(){
+		Iterable<ProductEntity> productList = productRepository.findAll();
+		List<ResponseProduct> result = new ArrayList<>();
+
+		productList.forEach(v -> {
+			result.add(new ModelMapper().map(v, ResponseProduct.class));
+		});
+
+		return ResponseEntity.status(HttpStatus.OK).body(result);
+	}
 }

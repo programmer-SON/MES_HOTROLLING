@@ -15,10 +15,10 @@ import lombok.Data;
 public class UserEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String person_id;
+	private String userId;
 	private String password;
 	private String name;
 	private Integer phone;

@@ -8,9 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 //@RunWith(SpringRunner.class)
 class ProcessServiceApplicationTests {
 
-	//private ProductRepository productRepository;
-	private 
-	
+
 	
 	@Test
 	void insertTest() {}

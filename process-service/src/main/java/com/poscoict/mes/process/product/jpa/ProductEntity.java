@@ -19,7 +19,7 @@ public class ProductEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String product_id;
+	private String productId;
 	private Integer thickness;
 	private Integer width;
 	private Integer length;
