@@ -1,5 +1,5 @@
 server:
-  port: 8086
+  port: 8080
 
 spring:
   application:
@@ -11,6 +11,18 @@ spring:
     password: passw0rd
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,4 +30,6 @@ spring:
     generate-ddl: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-
+logging:
+  level:
+    com.poscoict.mes.user: DEBUG
