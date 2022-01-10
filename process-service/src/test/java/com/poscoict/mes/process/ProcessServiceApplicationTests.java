@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 //@RunWith(SpringRunner.class)
 class ProcessServiceApplicationTests {
-
-
 	
 	@Test
 	void insertTest() {}
