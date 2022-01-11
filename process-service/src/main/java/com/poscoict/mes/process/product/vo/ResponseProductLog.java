@@ -8,14 +8,13 @@ import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonInclude
 public class ResponseProductLog {
 	
-	private String product_id;
+	private String productId;
 	private Integer thickness;
 	private Integer width;
 	private Integer length;
-	private String product_status;
-	private LocalTime product_update;
+	private String productStatus;
+	private LocalTime productUpdate;
 	
 }

@@ -1,7 +1,6 @@
-package com.poscoict.mes.process.product.jpa;
+package com.poscoict.mes.process.admin.jpa;
 
-
-import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,18 +14,16 @@ import lombok.ToString;
 @Data
 @Entity
 @ToString
-@Table( name = "product_log" )
-public class ProductLogEntity {
+@Table( name = "admin_client" )
+public class AdminClientEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String productId;
-	private Integer thickness;
-	private Integer width;
-	private Integer length;
-	private String productStatus;
-	private LocalTime productUpdate;
-	
+	private String clientId;
+	private String clientName;
+	private String clientEmail;
+	private String clientNumber;
+	private Date clientUpdate;
 }
