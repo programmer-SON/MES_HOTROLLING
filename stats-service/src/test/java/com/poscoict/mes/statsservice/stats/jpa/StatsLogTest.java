@@ -10,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-// @RunWith(SpringRunner.class)
 class StatsLogTest {
 
 	@Autowired
 	StatsLogRepository repo;
 	
 	@Test
-	@DisplayName("insertOrder")
-	void insertProductLog() {
+	@DisplayName("insertStatsLog")
+	void insertStatsLog() {
 		IntStream.range(1, 10).forEach(i -> {
 			StatsLogEntity entity = new StatsLogEntity();
 			entity.setStatsId("B1234" + i);
@@ -37,6 +36,6 @@ class StatsLogTest {
 	}
 	
 	@Test
-	void getProductLog() {}
+	void getStatsLog() {}
 
 }

@@ -17,7 +17,7 @@ class ProductLogTest {
 	ProductLogRepository repo;
 	
 	@Test
-	@DisplayName("insertOrder")
+	@DisplayName("insertProductLog")
 	void insertProductLog() {
 		IntStream.range(1, 10).forEach(i -> {
 			ProductLogEntity entity = new ProductLogEntity();
