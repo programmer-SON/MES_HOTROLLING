@@ -28,13 +28,18 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user){
+    public ResponseEntity<Integer> createUser(@RequestBody RequestUser user){
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-       userService.createUser(user);
+       UserDto userDto = userService.createUser(user);
+       if(userDto == null){
+           return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(503);
+       }
+
        ResponseUser responseUser = mapper.map(user, ResponseUser.class);
 
-       return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+       //return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(201);
     }
 }

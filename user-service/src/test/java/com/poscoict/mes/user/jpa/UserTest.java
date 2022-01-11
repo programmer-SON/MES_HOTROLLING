@@ -18,18 +18,18 @@ class UserTest {
 	private UserRepository repo;
 	
 	
-	@Test
-	void testInsertUserTest() {
-		
-		for(int i=1; i<=100; i++) {
-			UserEntity userEntity = new UserEntity();
-			userEntity.setName("SON" + i);
-			userEntity.setPassword("1234" + i);
-			userEntity.setPhone(12345 + i);
-			userEntity.setEmail("son@naver.com" + (i%10));
-			userEntity.setUserId("sjw"+i);
-			repo.save(userEntity);
-		}
-	}
+//	@Test
+//	void testInsertUserTest() {
+//
+//		for(int i=1; i<=100; i++) {
+//			UserEntity userEntity = new UserEntity();
+//			userEntity.setName("SON" + i);
+//			userEntity.setPassword("1234" + i);
+//			userEntity.setPhone(12345 + i);
+//			userEntity.setEmail("son@naver.com" + (i%10));
+//			userEntity.setUserId("sjw"+i);
+//			repo.save(userEntity);
+//		}
+//	}
 
 }

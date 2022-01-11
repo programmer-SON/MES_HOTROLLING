@@ -7,4 +7,5 @@ public class RequestUser {
     private String userId;
     private String password;
     private String name;
+    private Integer phone;
 }

@@ -24,15 +24,15 @@ class UserServiceApplicationTests {
 	private UserRepository repo;
 	
 	
-	@Test
-	void testInsertUserTest() {
-		UserEntity userEntity = new UserEntity();
-		userEntity.setName("SON");
-		userEntity.setPassword("1234");
-		userEntity.setPhone(12345);
-		userEntity.setEmail("son@naver.com");
-		repo.save(userEntity);
-		System.out.println("hello world");
-	}
+//	@Test
+//	void testInsertUserTest() {
+//		UserEntity userEntity = new UserEntity();
+//		userEntity.setName("SON");
+//		userEntity.setPassword("1234");
+//		userEntity.setPhone(12345);
+//		userEntity.setEmail("son@naver.com");
+//		repo.save(userEntity);
+//		System.out.println("hello world");
+//	}
 
 }

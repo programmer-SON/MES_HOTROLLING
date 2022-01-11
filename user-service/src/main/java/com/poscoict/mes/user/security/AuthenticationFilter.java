@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poscoict.mes.user.dto.UserDto;
 import com.poscoict.mes.user.service.UserService;
 import com.poscoict.mes.user.vo.RequestLogin;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
+@Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
     private UserService userService;
@@ -56,8 +61,15 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
         String userId = ((User)authResult.getPrincipal()).getUsername();
+        UserDto userDetails = userService.getUserDetailsById(userId);
 
+        String token = Jwts.builder()
+                .setSubject(userDetails.getUserId())
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(env.getProperty("token.expiration_time"))))
+                .signWith(SignatureAlgorithm.HS512, env.getProperty("token.secret"))
+                .compact();
 
-        super.successfulAuthentication(request, response, chain, authResult);
+        response.addHeader("token",token);
+        response.addHeader("userId",userDetails.getUserId());
     }
 }

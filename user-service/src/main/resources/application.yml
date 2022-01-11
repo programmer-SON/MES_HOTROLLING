@@ -10,6 +10,13 @@ spring:
     username: root
     password: passw0rd
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
 eureka:
   instance:
@@ -23,13 +30,12 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    generate-ddl: true
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
 logging:
   level:
     com.poscoict.mes.user: DEBUG
+
+token:
+  expiration_time: 86400000
+  secret: user_token

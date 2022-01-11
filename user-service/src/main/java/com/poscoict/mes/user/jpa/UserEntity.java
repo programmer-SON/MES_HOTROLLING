@@ -17,10 +17,10 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@Column(nullable = false, length = 50, unique = true)
 	private String userId;
-	private String password;
+	private String encryptedPwd;
 	private String name;
 	private Integer phone;
-	private String email;	
 }
