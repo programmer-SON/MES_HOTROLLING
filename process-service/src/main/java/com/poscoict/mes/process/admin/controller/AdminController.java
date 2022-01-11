@@ -31,18 +31,18 @@ public class AdminController {
 	
 	AdminMemberRepository adminMemberRepository;
 	AdminNewMemberRepository adminNewMemberRepository;
-	AdminClientRepository adminClientRepository;
 	AdminProductRepository adminProductRepository;
+	AdminClientRepository adminClientRepository;
 	
 	@Autowired
 	public AdminController(AdminMemberRepository adminMemberRepository,
 			AdminNewMemberRepository adminNewMemberRepository,
-			AdminClientRepository adminClientRepository,
-			AdminProductRepository adminProductRepository) {
+			AdminProductRepository adminProductRepository,
+			AdminClientRepository adminClientRepository) {
 		this.adminMemberRepository = adminMemberRepository;
 		this.adminNewMemberRepository = adminNewMemberRepository;
-		this.adminClientRepository = adminClientRepository;
 		this.adminProductRepository = adminProductRepository;
+		this.adminClientRepository = adminClientRepository;
 	}
 
 	@GetMapping("/admin_member")
