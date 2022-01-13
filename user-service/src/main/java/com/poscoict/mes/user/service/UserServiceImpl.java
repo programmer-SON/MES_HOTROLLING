@@ -3,6 +3,7 @@ package com.poscoict.mes.user.service;
 import com.poscoict.mes.user.dto.UserDto;
 import com.poscoict.mes.user.jpa.UserEntity;
 import com.poscoict.mes.user.jpa.UserRepository;
+import com.poscoict.mes.user.vo.RequestLogin;
 import com.poscoict.mes.user.vo.RequestUser;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -76,6 +77,22 @@ public class UserServiceImpl implements UserService {
         }
 
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
+        return userDto;
+    }
+
+    @Override
+    public UserDto login(RequestLogin user) {
+        String userId = user.getUserId();
+        String password =user.getPassword();
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        if(userEntity == null || !passwordEncoder.matches(password, userEntity.getEncryptedPwd())){
+            throw new UsernameNotFoundException(userId);
+        }
+
+        UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
+
         return userDto;
     }
 }
