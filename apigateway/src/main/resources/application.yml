@@ -27,7 +27,7 @@ spring:
         - id: process-service
           uri: lb://PROCESS-SERVICE
           predicates:
-            - Path=/process-service/**
+            - Path=/process-service/**            -
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:

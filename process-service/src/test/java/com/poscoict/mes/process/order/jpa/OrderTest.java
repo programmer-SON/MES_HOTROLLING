@@ -5,8 +5,11 @@ import java.util.stream.IntStream;
 
 import com.poscoict.mes.process.company.jpa.CompanyEntity;
 import com.poscoict.mes.process.company.jpa.CompanyRepository;
+import com.poscoict.mes.process.order.client.UserServiceClient;
+import com.poscoict.mes.process.order.vo.ResponseUser;
 import com.poscoict.mes.process.product.jpa.ProductEntity;
 import com.poscoict.mes.process.product.jpa.ProductRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 //import org.junit.runner.RunWith;
@@ -21,12 +24,17 @@ class OrderTest {
 	OrderRepository orderRepo;
 	CompanyRepository companyRepo;
 	ProductRepository productRepo;
+	UserServiceClient userServiceClient;
 
 	@Autowired
-	public OrderTest(OrderRepository orderRepo, CompanyRepository companyRepo, ProductRepository productRepo) {
+	public OrderTest(OrderRepository orderRepo,
+					 CompanyRepository companyRepo,
+					 ProductRepository productRepo,
+					 UserServiceClient userServiceClient) {
 		this.orderRepo = orderRepo;
 		this.companyRepo = companyRepo;
 		this.productRepo = productRepo;
+		this.userServiceClient =userServiceClient;
 	}
 
 
@@ -78,6 +86,13 @@ class OrderTest {
 			entity.setStock(10 * i);
 			productRepo.save(entity);
 		});
+	}
+
+	@Test
+	@DisplayName("FeignClientgetUser")
+	void getUser(){
+		ResponseUser responseUser = userServiceClient.getUser("sjw782@naver.com");
+		Assertions.assertThat(responseUser).isNotNull();
 	}
 
 	@Test
