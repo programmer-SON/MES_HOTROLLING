@@ -1,8 +1,6 @@
 package com.poscoict.mes.statsservice.stats.jpa;
 
 
-import java.time.LocalTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,18 +13,17 @@ import lombok.ToString;
 @Data
 @Entity
 @ToString
-@Table( name = "stats_log" )
-public class StatsLogEntity {
+@Table( name = "product_stats_log" )
+public class ProductStatsLogEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String statsId;
-	private Integer thickness;
+	private String productId;
+	private Double thickness;
 	private Integer width;
 	private Integer length;
-	private String statsStatus;
-	private LocalTime statsUpdate;
+	private String status;
 	
 }
