@@ -50,16 +50,16 @@ public class OrderController {
 	}
 	
 	@PostMapping("/orders")
-	public ResponseEntity<ResponseOrder> createOrders(@RequestBody RequestOrder requestOrder){
+	public ResponseEntity<Integer> createOrders(@RequestBody RequestOrder requestOrder){
 		
       ModelMapper mapper = new ModelMapper();
       mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        
-       ResponseOrder responseOrder = mapper.map(requestOrder, ResponseOrder.class);
-       
+
+	  orderService.createOrder(requestOrder);
+
         //ResponseOrder responseUser = mapper.map(userDto, ResponseUser.class);
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(responseOrder);
+		return ResponseEntity.status(HttpStatus.CREATED).body(201);
 	}
 
 	@GetMapping("/{userId}/plans")

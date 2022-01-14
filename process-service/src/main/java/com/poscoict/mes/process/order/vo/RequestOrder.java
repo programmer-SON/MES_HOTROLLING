@@ -13,15 +13,15 @@ import lombok.Data;
 @Data
 public class RequestOrder {
 	
-//	private String userId;
-//	private String orderId;
-//	private String productId;
+	private String userId;
+	private String orderId;
+	private String productId;
 	private String companyId;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date processStart;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date processEnd;
-//	private Integer stockPlan;
+	private Integer stockPlan;
 //	private String status;
 
 //    @NotNull(message = "Name cannot be null")
