@@ -27,7 +27,8 @@ spring:
         - id: process-service
           uri: lb://PROCESS-SERVICE
           predicates:
-            - Path=/process-service/**            -
+            - Path=/process-service/**
+            - Method=GET
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -60,7 +61,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+#            - AuthorizationHeaderFilter
 
 token:
   secret: user_token

@@ -1,14 +1,22 @@
-package com.poscoict.mes.process.order.jpa;
+package com.poscoict.mes.process.order;
 
 import java.util.Date;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import com.poscoict.mes.process.company.jpa.CompanyEntity;
 import com.poscoict.mes.process.company.jpa.CompanyRepository;
+import com.poscoict.mes.process.company.service.CompanyService;
+import com.poscoict.mes.process.company.vo.ResponseCompany;
 import com.poscoict.mes.process.order.client.UserServiceClient;
+import com.poscoict.mes.process.order.service.OrderService;
+import com.poscoict.mes.process.order.vo.ResponseProductPlan;
 import com.poscoict.mes.process.order.vo.ResponseUser;
 import com.poscoict.mes.process.product.jpa.ProductEntity;
 import com.poscoict.mes.process.product.jpa.ProductRepository;
+import com.poscoict.mes.process.product.service.ProductService;
+import com.poscoict.mes.process.product.vo.ResponseProduct;
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,28 +24,32 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
+@WebAppConfiguration
 @SpringBootTest
-//@RunWith(SpringRunner.class)
+@Slf4j
 class OrderTest {
 
-	OrderRepository orderRepo;
-	CompanyRepository companyRepo;
-	ProductRepository productRepo;
+//	OrderRepository orderRepository;
 	UserServiceClient userServiceClient;
 
+	CompanyService companyService;
+	ProductService productService;
+
 	@Autowired
-	public OrderTest(OrderRepository orderRepo,
-					 CompanyRepository companyRepo,
-					 ProductRepository productRepo,
-					 UserServiceClient userServiceClient) {
-		this.orderRepo = orderRepo;
-		this.companyRepo = companyRepo;
-		this.productRepo = productRepo;
-		this.userServiceClient =userServiceClient;
+	public OrderTest( UserServiceClient userServiceClient,
+					 CompanyService companyService,
+					 ProductService productService) {
+
+		this.userServiceClient = userServiceClient;
+		this.companyService = companyService;
+		this.productService = productService;
 	}
 
 
+
+	/*
 	@Test
 	@DisplayName("insertOrder")
 	void insertOrder() {
@@ -57,7 +69,7 @@ class OrderTest {
 			}else {
 				entity.setStatus("완료");
 			}
-			orderRepo.save(entity);
+			orderRepository.save(entity);
 		});	
 	}
 
@@ -94,8 +106,34 @@ class OrderTest {
 		ResponseUser responseUser = userServiceClient.getUser("sjw782@naver.com");
 		Assertions.assertThat(responseUser).isNotNull();
 	}
+	*/
+
 
 	@Test
-	void getOrders() {}
+	void getProductPlan() {
+		//ResponseProductPlan plan = orderService.getProductPlan("son");
+		ResponseProductPlan plan = new ResponseProductPlan();
+		List<ResponseCompany> companyList = companyService.getCompanies();
+		List<ResponseProduct> productList = productService.getProducts();
+		ResponseUser responseUser = userServiceClient.getUser("son");
+
+//		Assertions.assertThat(companyList).isNull();
+
+		plan.setCompanyList(companyList);
+		plan.setProductList(productList);
+		plan.setResponseUser(responseUser);
+
+
+		plan.getProductList().forEach(r -> {
+			log.info(r.toString());
+		});
+
+		plan.getCompanyList().forEach(r -> {
+			log.info(r.toString());
+		});
+
+		log.info(plan.getResponseUser().toString());
+
+	}
 
 }
