@@ -1,15 +1,14 @@
 package com.poscoict.mes.user.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
 @Data
-public class RequestLogin {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResponseLogin {
     @NotNull
     private String userId;
     private String password;
-//    private String name;
-//    private Integer phone;
-    //private String email;
 }
