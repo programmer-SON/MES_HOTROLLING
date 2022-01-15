@@ -1,5 +1,6 @@
 package com.poscoict.mes.process.order.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,21 +44,16 @@ public class OrderController {
 			result.add(new ModelMapper().map(v, ResponseOrder.class));
 		});
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json");
-		
 		return ResponseEntity.status(HttpStatus.OK).body(result);
 	}
 	
 	@PostMapping("/orders")
-	public ResponseEntity<Integer> createOrders(@RequestBody RequestOrder requestOrder){
+	public ResponseEntity<Integer> createOrders(@RequestBody RequestOrder requestOrder) throws ParseException {
 		
       ModelMapper mapper = new ModelMapper();
       mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
 	  orderService.createOrder(requestOrder);
-
-        //ResponseOrder responseUser = mapper.map(userDto, ResponseUser.class);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(201);
 	}
@@ -65,7 +61,6 @@ public class OrderController {
 	@GetMapping("/{userId}/plans")
 	public ResponseEntity<ResponseProductPlan> getProductPlan(@PathVariable("userId") String userId){
 
-		//ResponseProductPlan responseProductPlan = orderService.getProductPlan(userId);
 		ResponseProductPlan responseProductPlan = orderService.getProductPlan(userId);
 
 		return ResponseEntity.status(HttpStatus.OK).body(responseProductPlan);

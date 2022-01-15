@@ -15,6 +15,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Service
@@ -50,10 +51,14 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public void createOrder(RequestOrder requestOrder) {
+    public void createOrder(RequestOrder requestOrder) throws ParseException {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        long total = orderRepository.count() + 1;
         OrderEntity entity = mapper.map(requestOrder, OrderEntity.class);
+        // OrderId -> START O+NUMBER
+        entity.setOrderId("O" + String.valueOf(total));
 
         orderRepository.save(entity);
    }

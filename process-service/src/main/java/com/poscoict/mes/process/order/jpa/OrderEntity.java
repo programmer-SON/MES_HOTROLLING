@@ -7,6 +7,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @Entity
@@ -17,6 +19,8 @@ import lombok.Data;
 		initialValue = 1,
 		allocationSize = 1
 )
+// if Column Null, default value
+@DynamicInsert
 public class OrderEntity {
 	
 	@Id
@@ -30,13 +34,15 @@ public class OrderEntity {
 	private String companyId;
 	private String userId;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-	private Date processStart;
+	private String processStart;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-	private Date processEnd;
+	private String processEnd;
 
+	@CreatedDate
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
+	@Column(columnDefinition = "DATE default (current_date)")
 	private Date regdate;
 	private Integer stockPlan;
 	@Column(columnDefinition = "varchar(255) default 'processing'")
 	private String status;
-	
 }
