@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-// @RunWith(SpringRunner.class)
 class HeatingLogTest {
 
 	@Autowired
@@ -18,16 +17,25 @@ class HeatingLogTest {
 	@Test
 	@DisplayName("insertHeatingLog")
 	void insertHeatingLog() {
-		IntStream.range(1, 10).forEach(i -> {
-			HeatingLogEntity entity = new HeatingLogEntity();
-			entity.setHeatingFurnanceId("id"+i);
-			entity.setHeatingZoneTemp(i*10);
-			entity.setPreheatingZoneTemp(i*20);
-			entity.setSoakingZoneTemp(i * 30);
-			entity.setHeatingFurnanceUpdate("2022-01-"+i);
+		IntStream.range(1, 20).forEach(j -> {
+			IntStream.range(1, 5).forEach(i -> {
+				HeatingLogEntity entity = new HeatingLogEntity();
+				entity.setHeatingFurnanceId("hotRolling" + i);
+				entity.setPreheatingZoneTemp(900 + i*10 + j);
 			
-			repo.save(entity);
-		});	
+				if(i % 2 == 0) {
+					entity.setHeatingZoneTemp(700 + i*10 - j);
+					entity.setSoakingZoneTemp(1000 - i*10 + j);
+				}else {
+					entity.setHeatingZoneTemp(700 - i*10 + j);
+					entity.setSoakingZoneTemp(1000 + i*10 - j);
+				}
+			
+				entity.setHeatingFurnanceUpdate("2022-01-"+j);
+			
+				repo.save(entity);
+			});
+		});
 	}
 	
 	@Test
