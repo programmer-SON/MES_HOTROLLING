@@ -1,5 +1,7 @@
 package com.poscoict.mes.statsservice.stats.vo;
 
+import java.time.LocalTime;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
@@ -12,6 +14,7 @@ public class ResponseProductStatsLog {
 	private Double thickness;
 	private Integer width;
 	private Integer length;
-	private String status;
+	private String productStatus;
+	private LocalTime productUpdate;
 	
 }

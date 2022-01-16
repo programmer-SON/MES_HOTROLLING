@@ -39,7 +39,7 @@ public class StatsController {
 		this.productStatsLogRepository = productStatsLogRepository;
 	}
 
-	@GetMapping("/temperature_stats_log")
+	@GetMapping("/heating_furnance_temperature_log")
 	public ResponseEntity<List<ResponseTempStatsLog>> getTempStatsLog(){		
 		Iterable<TempStatsLogEntity> tempStatsLogList = tempStatsLogRepository.findAll();
 		List<ResponseTempStatsLog> result = new ArrayList<>();
@@ -69,7 +69,7 @@ public class StatsController {
 		return ResponseEntity.status(HttpStatus.OK).body(result);
 	}
 	
-	@GetMapping("/product_stats_log")
+	@GetMapping("/product_log")
 	public ResponseEntity<List<ResponseProductStatsLog>> getProductStatsLog(){		
 		Iterable<ProductStatsLogEntity> productStatsLogList = productStatsLogRepository.findAll();
 		List<ResponseProductStatsLog> result = new ArrayList<>();

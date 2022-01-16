@@ -1,8 +1,6 @@
 package com.poscoict.mes.process.product.jpa;
 
 
-import java.time.LocalTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +21,10 @@ public class ProductLogEntity {
 	private Long id;
 	
 	private String productId;
-	private Integer thickness;
+	private Double thickness;
 	private Integer width;
 	private Integer length;
 	private String productStatus;
-	private LocalTime productUpdate;
+	private String productUpdate;
 	
 }

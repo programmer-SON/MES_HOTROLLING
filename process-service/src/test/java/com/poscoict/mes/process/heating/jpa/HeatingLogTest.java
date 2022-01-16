@@ -1,6 +1,5 @@
 package com.poscoict.mes.process.heating.jpa;
 
-import java.util.Date;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.Test;
 // import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 // @RunWith(SpringRunner.class)
@@ -22,11 +20,11 @@ class HeatingLogTest {
 	void insertHeatingLog() {
 		IntStream.range(1, 10).forEach(i -> {
 			HeatingLogEntity entity = new HeatingLogEntity();
-			entity.setHeatingFurnanceId(i);
-			entity.setHeatingZoneTemp(i*0.1);
-			entity.setPreheatingZoneTemp(i*0.01);
-			entity.setSoakingZoneTemp(i * 0.001);
-			entity.setHeatingFurnanceUpdate(new Date());
+			entity.setHeatingFurnanceId("id"+i);
+			entity.setHeatingZoneTemp(i*10);
+			entity.setPreheatingZoneTemp(i*20);
+			entity.setSoakingZoneTemp(i * 30);
+			entity.setHeatingFurnanceUpdate("2022-01-"+i);
 			
 			repo.save(entity);
 		});	

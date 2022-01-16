@@ -118,12 +118,14 @@ class StatsLogTest {
 						entity.setThickness(2.0 + i*0.1);
 						entity.setWidth(1500 + i*11 - j);
 						entity.setLength(1100+i);
-						entity.setStatus("양품");
+						entity.setProductStatus("양품");
+						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(2.0 - i*0.1);
 						entity.setWidth(1500 - i*11 + j);
 						entity.setLength(1100-i);
-						entity.setStatus("불량");
+						entity.setProductStatus("불량");
+						entity.setProductUpdate("2022-01-"+j);
 					}
 					repoProduct.save(entity);
 				});
@@ -137,12 +139,14 @@ class StatsLogTest {
 						entity.setThickness(6.0 + i*0.1);
 						entity.setWidth(1500 + i*11 - j);
 						entity.setLength(370+i);
-						entity.setStatus("양품");
+						entity.setProductStatus("양품");
+						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(6.0 - i*0.1);
 						entity.setWidth(1500 - i*11 + j);
 						entity.setLength(370-i);
-						entity.setStatus("불량");
+						entity.setProductStatus("불량");
+						entity.setProductUpdate("2022-01-"+j);
 					}
 					repoProduct.save(entity);
 				});
@@ -156,12 +160,14 @@ class StatsLogTest {
 						entity.setThickness(5.0 + i*0.1);
 						entity.setWidth(1200 + i*11 - j);
 						entity.setLength(540+i);
-						entity.setStatus("양품");
+						entity.setProductStatus("양품");
+						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(5.0 - i*0.1);
 						entity.setWidth(1200 - i*11 + j);
 						entity.setLength(540-i);
-						entity.setStatus("불량");
+						entity.setProductStatus("불량");
+						entity.setProductUpdate("2022-01-"+j);
 					}
 					repoProduct.save(entity);
 				});
@@ -175,12 +181,14 @@ class StatsLogTest {
 						entity.setThickness(4.8 + i*0.1);
 						entity.setWidth(1200 + i*11 - j);
 						entity.setLength(540+i);
-						entity.setStatus("양품");
+						entity.setProductStatus("양품");
+						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(4.8 - i*0.1);
 						entity.setWidth(1200 - i*11 + j);
 						entity.setLength(540-i);
-						entity.setStatus("불량");
+						entity.setProductStatus("불량");
+						entity.setProductUpdate("2022-01-"+j);
 					}
 					repoProduct.save(entity);
 				});
@@ -194,12 +202,14 @@ class StatsLogTest {
 						entity.setThickness(4.8 + i*0.1);
 						entity.setWidth(1200 + i*11 - j);
 						entity.setLength(11+i);
-						entity.setStatus("양품");
+						entity.setProductStatus("양품");
+						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(4.8 - i*0.1);
 						entity.setWidth(1200 - i*11 + j);
 						entity.setLength(11-i);
-						entity.setStatus("불량");
+						entity.setProductStatus("불량");
+						entity.setProductUpdate("2022-01-"+j);
 					}
 					repoProduct.save(entity);
 				});

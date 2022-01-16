@@ -13,7 +13,7 @@ import lombok.ToString;
 @Data
 @Entity
 @ToString
-@Table( name = "product_stats_log" )
+@Table( name = "product_log" )
 public class ProductStatsLogEntity {
 	
 	@Id
@@ -24,6 +24,7 @@ public class ProductStatsLogEntity {
 	private Double thickness;
 	private Integer width;
 	private Integer length;
-	private String status;
+	private String productStatus;
+	private String productUpdate;
 	
 }

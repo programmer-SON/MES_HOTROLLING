@@ -15,7 +15,7 @@ import lombok.ToString;
 @Data
 @Entity
 @ToString
-@Table( name = "temperature_stats_log" )
+@Table( name = "heating_furnance_temperature_log" )
 public class TempStatsLogEntity {
 	
 	@Id
