@@ -20,10 +20,10 @@ public class ResponseOrder {
 	private String productId;
 	private String companyId;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-	private Date processStart;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-	private Date processEnd;
+//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private String processStart;
+//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private String processEnd;
 	private Integer stockPlan;
 	private String status;
 

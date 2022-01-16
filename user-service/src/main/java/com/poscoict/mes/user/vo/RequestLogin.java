@@ -9,7 +9,4 @@ public class RequestLogin {
     @NotNull
     private String userId;
     private String password;
-//    private String name;
-//    private Integer phone;
-    //private String email;
 }
