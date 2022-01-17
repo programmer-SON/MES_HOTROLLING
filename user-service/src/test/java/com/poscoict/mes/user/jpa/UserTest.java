@@ -1,20 +1,13 @@
 package com.poscoict.mes.user.jpa;
 
 
-import com.poscoict.mes.user.dto.UserDto;
-import com.poscoict.mes.user.vo.RequestLogin;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-//import org.junit.runner.RunWith;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import com.poscoict.mes.user.jpa.UserEntity;
-import com.poscoict.mes.user.jpa.UserRepository;
+import com.poscoict.mes.user.vo.RequestLogin;
 
 @SpringBootTest
 //@RunWith(SpringRunner.class)
@@ -46,7 +39,7 @@ class UserTest {
 	@Test
 	void UserLoginTest(){
 		RequestLogin user = new RequestLogin();
-		user.setUserId("son");
+		user.setUserId("admin@poscoict.com");
 		user.setPassword("1234");
 
 		String userId = user.getUserId();

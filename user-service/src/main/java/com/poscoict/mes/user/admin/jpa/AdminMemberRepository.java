@@ -1,4 +1,4 @@
-package com.poscoict.mes.process.admin.jpa;
+package com.poscoict.mes.user.admin.jpa;
 
 import org.springframework.data.repository.CrudRepository;
 

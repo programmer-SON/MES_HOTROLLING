@@ -1,4 +1,4 @@
-package com.poscoict.mes.process.admin.vo;
+package com.poscoict.mes.user.admin.vo;
 
 import java.util.Date;
 

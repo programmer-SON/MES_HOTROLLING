@@ -24,7 +24,7 @@ class HeatingLogTest {
 				entity.setPreheatingZoneTemp(900 + i*10 + j);
 			
 				if(i % 2 == 0) {
-					entity.setHeatingZoneTemp(700 + i*10 - j);
+					entity.setHeatingZoneTemp(700+ i*10 - j);
 					entity.setSoakingZoneTemp(1000 - i*10 + j);
 				}else {
 					entity.setHeatingZoneTemp(700 - i*10 + j);
