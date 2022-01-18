@@ -22,8 +22,8 @@ public class ProductLogEntity {
 	
 	private String productId;
 	private Double thickness;
-	private Integer width;
-	private Integer length;
+	private Double width;
+	private Double length;
 	private String productStatus;
 	private String productUpdate;
 	

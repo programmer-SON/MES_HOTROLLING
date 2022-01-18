@@ -30,14 +30,14 @@ Random random = new Random();
 					
 					if(random.nextInt(100)%2 == 0) {
 						entity.setThickness(2.0 + i*0.1);
-						entity.setWidth(1500 + i*11 - j);
-						entity.setLength(1100+i);
+						entity.setWidth((double) 1500 + i*11 - j);
+						entity.setLength((double) 1100+i);
 						entity.setProductStatus("양품");
 						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(2.0 - i*0.1);
-						entity.setWidth(1500 - i*11 + j);
-						entity.setLength(1100-i);
+						entity.setWidth((double) 1500 - i*11 + j);
+						entity.setLength((double) 1100-i);
 						entity.setProductStatus("불량");
 						entity.setProductUpdate("2022-01-"+j);
 					}
@@ -51,14 +51,14 @@ Random random = new Random();
 					
 					if(random.nextInt(100)%2 == 0) {
 						entity.setThickness(6.0 + i*0.1);
-						entity.setWidth(1500 + i*11 - j);
-						entity.setLength(370+i);
+						entity.setWidth((double) 1500 + i*11 - j);
+						entity.setLength((double) 370+i);
 						entity.setProductStatus("양품");
 						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(6.0 - i*0.1);
-						entity.setWidth(1500 - i*11 + j);
-						entity.setLength(370-i);
+						entity.setWidth((double)1500 - i*11 + j);
+						entity.setLength((double) 370-i);
 						entity.setProductStatus("불량");
 						entity.setProductUpdate("2022-01-"+j);
 					}
@@ -72,14 +72,14 @@ Random random = new Random();
 					
 					if(random.nextInt(100)%2 == 0) {
 						entity.setThickness(5.0 + i*0.1);
-						entity.setWidth(1200 + i*11 - j);
-						entity.setLength(540+i);
+						entity.setWidth((double) 1200 + i*11 - j);
+						entity.setLength((double) 540+i);
 						entity.setProductStatus("양품");
 						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(5.0 - i*0.1);
-						entity.setWidth(1200 - i*11 + j);
-						entity.setLength(540-i);
+						entity.setWidth((double) 1200 - i*11 + j);
+						entity.setLength((double) 540-i);
 						entity.setProductStatus("불량");
 						entity.setProductUpdate("2022-01-"+j);
 					}
@@ -93,14 +93,14 @@ Random random = new Random();
 					
 					if(random.nextInt(100)%2 == 0) {
 						entity.setThickness(4.8 + i*0.1);
-						entity.setWidth(1200 + i*11 - j);
-						entity.setLength(540+i);
+						entity.setWidth((double) 1200 + i*11 - j);
+						entity.setLength((double) 540+i);
 						entity.setProductStatus("양품");
 						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(4.8 - i*0.1);
-						entity.setWidth(1200 - i*11 + j);
-						entity.setLength(540-i);
+						entity.setWidth((double) 1200 - i*11 + j);
+						entity.setLength((double) 540-i);
 						entity.setProductStatus("불량");
 						entity.setProductUpdate("2022-01-"+j);
 					}
@@ -114,14 +114,14 @@ Random random = new Random();
 					
 					if(random.nextInt(100)%2 == 0) {
 						entity.setThickness(4.8 + i*0.1);
-						entity.setWidth(1200 + i*11 - j);
-						entity.setLength(11+i);
+						entity.setWidth((double) 1200 + i*11 - j);
+						entity.setLength((double) 11+i);
 						entity.setProductStatus("양품");
 						entity.setProductUpdate("2022-01-"+j);
 					}else {
 						entity.setThickness(4.8 - i*0.1);
-						entity.setWidth(1200 - i*11 + j);
-						entity.setLength(11-i);
+						entity.setWidth((double) 1200 - i*11 + j);
+						entity.setLength((double) 11-i);
 						entity.setProductStatus("불량");
 						entity.setProductUpdate("2022-01-"+j);
 					}
