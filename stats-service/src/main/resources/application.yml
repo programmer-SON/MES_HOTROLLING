@@ -6,9 +6,9 @@ spring:
     name: stats-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/statsdb?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: huny
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
