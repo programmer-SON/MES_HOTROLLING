@@ -2,7 +2,9 @@ package com.poscoict.mes.user.admin.messagequeue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.poscoict.mes.user.admin.dto.CompanyCheckDto;
 import com.poscoict.mes.user.admin.dto.CompanyDto;
+import com.poscoict.mes.user.admin.dto.ProductCheckDto;
 import com.poscoict.mes.user.admin.dto.ProductDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +51,33 @@ public class KafkaProducer {
         return companyDto;
     }
 
+    public CompanyCheckDto send(String topic, CompanyCheckDto companyCheckDto){
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonInString = "";
+
+        try{
+            jsonInString = mapper.writeValueAsString(companyCheckDto);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        kafkaTemplate.send(topic, jsonInString);
+        log.info("Kafka Producer sent Company Delete data from the Order microservice: ");
+        return companyCheckDto;
+    }
+
+    public ProductCheckDto send(String topic, ProductCheckDto productCheckDto){
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonInString = "";
+
+        try{
+            jsonInString = mapper.writeValueAsString(productCheckDto);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        kafkaTemplate.send(topic, jsonInString);
+        log.info("Kafka Producer sent Product Delete data from the Order microservice: ");
+        return productCheckDto;
+    }
 }

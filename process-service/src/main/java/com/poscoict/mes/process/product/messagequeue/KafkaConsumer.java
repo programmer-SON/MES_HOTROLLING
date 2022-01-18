@@ -15,7 +15,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -71,5 +73,51 @@ public class KafkaConsumer {
         entity.setEmail((String)map.get("email"));
 
         companyRepository.save(entity);
+    }
+
+    @KafkaListener(topics = "company-delete-topic")
+    public void deleteCompany(String kafkaMessage){
+        log.info("Kafka Company Delete Message: -> " + kafkaMessage);
+
+        Map<Object, Object> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+
+        try{
+            map = mapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        List<String> checks =  (List<String>) map.get("checks");
+
+        for(String companyId : checks){
+            Optional<CompanyEntity> oEntity = companyRepository.findByCompanyId(companyId);
+            if(oEntity.isPresent()){
+                companyRepository.delete(oEntity.get());
+            }
+        }
+    }
+
+    @KafkaListener(topics = "product-delete-topic")
+    public void deleteProduct(String kafkaMessage){
+        log.info("Kafka Product Delete Message: -> " + kafkaMessage);
+
+        Map<Object, Object> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+
+        try{
+            map = mapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        List<String> checks =  (List<String>) map.get("checks");
+
+        for(String productId : checks){
+            Optional<ProductEntity> oEntity = productRepository.findByProductId(productId);
+            if(oEntity.isPresent()){
+                productRepository.delete(oEntity.get());
+            }
+        }
     }
 }
